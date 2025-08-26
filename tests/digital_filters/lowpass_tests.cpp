@@ -25,10 +25,11 @@ TEST(LowpassTest, Given_ADigitalLowpassFilter_When_SamplingSpeedIsSet_Then_Sampl
     EXPECT_FLOAT_EQ(test_lowpass.get_sampling_speed(), default_sampling_speed);
 
     // When  - Sampling speed is set,
-    test_lowpass.set_sampling_speed(5.0);
+    float updated_sampling_speed{ 5.0 };
+    test_lowpass.set_sampling_speed(updated_sampling_speed);
     
     // Then  - Sampling speed is correct.
-    EXPECT_FLOAT_EQ(test_lowpass.get_sampling_speed(), 5.0);
+    EXPECT_FLOAT_EQ(test_lowpass.get_sampling_speed(), updated_sampling_speed);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,8 +41,9 @@ TEST(LowpassTest, Given_ADigitalLowpassFilter_When_TimeConstantIsSet_Then_TimeCo
     EXPECT_FLOAT_EQ(test_lowpass.get_time_constant(), default_time_constant);
 
     // When  - Time constant is set,
-    test_lowpass.set_time_constant(5.0);
+    float updated_time_constant{ 5.0 };
+    test_lowpass.set_time_constant(updated_time_constant);
 
     // Then - Time constant is correct.
-    EXPECT_FLOAT_EQ(test_lowpass.get_time_constant(), 5.0);
+    EXPECT_FLOAT_EQ(test_lowpass.get_time_constant(), updated_time_constant);
 }
