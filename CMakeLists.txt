@@ -27,19 +27,14 @@ FetchContent_MakeAvailable(googletest)
 #---------------------------------------------------------------------------------------------------
 # Source(s)
 #---------------------------------------------------------------------------------------------------
-# set(LIB_SOURCES
-#     ${INC_DIR}/ex/ex.cpp
-# )
+set(LIB_SOURCES
+    ${SRC_DIR}/digital_filters/lowpass.cpp
+)
 
-# add_library(${PROJECT_NAME}_lib ${LIB_SOURCES})
-# target_include_directories(${PROJECT_NAME}_lib PUBLIC
-#     # ${INC_DIR}
-#     # ${SRC_DIR}
-# )
-
-add_library(${PROJECT_NAME}_lib INTERFACE)
-target_include_directories(${PROJECT_NAME}_lib INTERFACE
+add_library(${PROJECT_NAME}_lib ${LIB_SOURCES})
+target_include_directories(${PROJECT_NAME}_lib PUBLIC
     ${INC_DIR}
+    ${SRC_DIR}
 )
 
 # add_executable(${PROJECT_NAME} 
@@ -55,6 +50,7 @@ target_include_directories(${PROJECT_NAME}_lib INTERFACE
 enable_testing()
 
 set(TESTS
+    ${TEST_DIR}/digital_filters/lowpass_tests.cpp
     ${TEST_DIR}/math/basic_math_tests.cpp
 )
 
