@@ -8,8 +8,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace Digital_Filters
 {
-namespace Lowpass
-{
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 Digital_lowpass::Digital_lowpass(float t_s, float t_c)
@@ -68,5 +66,4 @@ void Digital_lowpass::update_constants()
     this->m_b = this->m_t_c / (this->m_t_s + this->m_t_c);
 }
 
-} // namespace Lowpass
 } // namespace Digital_Filters

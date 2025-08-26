@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "digital_filters/lowpass.h"
 
+#include <cstdint>
 #include <gtest/gtest.h>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,8 +21,7 @@ float default_time_constant{ 2.0 };
 TEST(LowpassTest, Given_ADigitalLowpassFilter_When_SamplingSpeedIsSet_Then_SamplingSpeedIsCorrect)
 {
     // Given - A digital lowpass filter,
-    Digital_Filters::Lowpass::Digital_lowpass test_lowpass(default_sampling_speed,
-        default_time_constant);
+    Digital_Filters::Digital_lowpass test_lowpass(default_sampling_speed, default_time_constant);
     EXPECT_FLOAT_EQ(test_lowpass.get_sampling_speed(), default_sampling_speed);
 
     // When  - Sampling speed is set,
@@ -36,8 +36,7 @@ TEST(LowpassTest, Given_ADigitalLowpassFilter_When_SamplingSpeedIsSet_Then_Sampl
 TEST(LowpassTest, Given_ADigitalLowpassFilter_When_TimeConstantIsSet_Then_TimeConstantIsCorrect)
 {
     // Given - A digital lowpass filter,
-    Digital_Filters::Lowpass::Digital_lowpass test_lowpass(default_sampling_speed,
-        default_time_constant);
+    Digital_Filters::Digital_lowpass test_lowpass(default_sampling_speed, default_time_constant);
     EXPECT_FLOAT_EQ(test_lowpass.get_time_constant(), default_time_constant);
 
     // When  - Time constant is set,
@@ -46,4 +45,31 @@ TEST(LowpassTest, Given_ADigitalLowpassFilter_When_TimeConstantIsSet_Then_TimeCo
 
     // Then - Time constant is correct.
     EXPECT_FLOAT_EQ(test_lowpass.get_time_constant(), updated_time_constant);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(LowpassTest, Given_ADigitalLowpassFilter_When_NoTicksOccured_Then_OutputIsZero)
+{
+    // Given - A digital lowpass filter,
+    Digital_Filters::Digital_lowpass test_lowpass(default_sampling_speed, default_time_constant);
+
+    // When  - No ticks occured,
+    // Then  - Output is zero.
+    EXPECT_FLOAT_EQ(test_lowpass.get_output(), 0.0);    
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(LowpassTest, Given_ADigitalLowpassFilter_When_ManyTicksOccured_Then_OutputIsExpected)
+{
+    // Given - A digital lowpass filter,
+    Digital_Filters::Digital_lowpass test_lowpass(default_sampling_speed, default_time_constant);
+
+    // When  - Many ticks occured,
+    for (uint8_t idx{ 0U }; idx < 100U; idx++)
+    {
+        static_cast<void>(test_lowpass.tick(1.0));
+    }
+
+    // Then  - Output is expected.
+    EXPECT_FLOAT_EQ(test_lowpass.get_output(), 1.0);
 }
