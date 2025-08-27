@@ -12,7 +12,7 @@ The forward Euler discretization:
 Where T<sub>s</sub> is the system sampling time.
 
 The updated transfer function in the z-domain:
-> $$ H(z) = { Y(z) \over X(z) } = { T_s \over T_s+RC(1-z^-1) } $$
+> $$ H(z) = { Y(z) \over X(z) } = { T_s \over T_s+RC(1-z^{-1}) } $$
 
 The discrete output:
 > $$ y[n] = { T_s \over T_s+RC }x[n] + { RC \over T_s+RC }y[n-1] $$
