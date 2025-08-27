@@ -9,7 +9,7 @@ Where R is the resistance and C is the capacitance.
 The forward Euler discretization:
 > $$ s = { z-1 \over T_s } $$
 
-Where $ T_s $ is the system sampling time.
+Where T<sub>s</sub> is the system sampling time.
 
 The updated transfer function in the z-domain:
 > $$ H(z) = { Y(z) \over X(z) } = { T_s \over T_s+RC(1-z^-1) } $$
