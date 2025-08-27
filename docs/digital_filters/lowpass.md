@@ -3,10 +3,12 @@ The digital lowpass filter is obtained by converting the transfer function of an
 
 The analog lowpass filter transfer function:
 > $$ H(s) = { Y(s) \over X(s) } = { 1 \over 1+sRC } $$
+
 Where R is the resistance and C is the capacitance.
 
 The forward Euler discretization:
 > $$ s = { z-1 \over T_s } $$
+
 Where $ T_s $ is the system sampling time.
 
 The updated transfer function in the z-domain:
